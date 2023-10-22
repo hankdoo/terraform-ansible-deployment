@@ -1,0 +1,3 @@
+bucket="jumbo-bucket-storage"
+key="stage/terraform.staging.tfstate"
+region="us-east-1"

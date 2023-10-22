@@ -1,0 +1,48 @@
+{
+  "name": "front-end",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=18.14.0",
+    "yarn": ">=1.22.0",
+    "npm": "please-use-yarn-instead"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "init-dev": "terraform -chdir=infra/terraform/ init  -backend-config=backend/dev.tfbackend -reconfigure",
+    "apply-dev": "terraform -chdir=infra/terraform/ apply -var-file=terraform-dev.tfvars",
+    "destroy-dev": "npm run init-dev &&terraform -chdir=infra/terraform/ destroy -var-file=terraform-dev.tfvars",
+    "init-staging": "terraform -chdir=infra/terraform/ init  -backend-config=backend/staging.tfbackend -reconfigure",
+    "apply-staging": "terraform -chdir=infra/terraform/ apply -var-file=terraform-staging.tfvars",
+    "destroy-staging": "npm run init-staging && terraform -chdir=infra/terraform/ destroy -var-file=terraform-staging.tfvars",
+    "lint": "next lint",
+    "prettier": "prettier --write ."
+  },
+  "dependencies": {
+    "@web3modal/ethereum": "^2.7.1",
+    "@web3modal/react": "^2.7.1",
+    "clsx": "^2.0.0",
+    "ethers": "5",
+    "moment": "^2.29.4",
+    "next": "13.5.4",
+    "next-i18next": "^11.0.0",
+    "prettier": "^3.0.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-responsive-carousel": "^3.2.23",
+    "react-tabs": "^6.0.2",
+    "sass": "^1.68.0",
+    "viem": "^1.14.0",
+    "wagmi": "^1.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.4",
+    "typescript": "^5"
+  }
+}
